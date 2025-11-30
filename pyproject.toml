@@ -1,0 +1,20 @@
+[project]
+name = "AIagenti01"
+version = "0.1.0"
+description = "AI Agent s Whisper a Ollama"
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.31.0",
+    "openai-whisper>=20231117",
+    "torch>=2.0.0",
+    "ollama>=0.1.0",
+    "python-dotenv>=1.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+# Konfigurace pro uv package manager
+python-version = "3.12"

@@ -4,6 +4,10 @@ import sys
 import argparse
 import requests
 import whisper
+from dotenv import load_dotenv
+
+# Načtení proměnných prostředí z .env souboru
+load_dotenv()
 
 
 def get_api_base_url() -> str:
