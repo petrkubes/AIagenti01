@@ -1,26 +1,4 @@
-# 🎙️ Speech-to-Text → LLM Agent
 
-Tento projekt slouží jako jednoduchý AI agent, který:
-
-1. Převádí audio soubor na text pomocí Whisper.
-2. Odesílá přepsaný text do lokálně běžícího LLM serveru Ollama (model llama3.1).
-3. Vypisuje odpověď modelu zpět do konzole.
-
-Projekt běží kompletně lokálně a podporuje GPU akceleraci přes Ollama.
-
----
-
-## 🧰 Technologie
-
-- Python 3.10+
-- Whisper (openai-whisper)
-- Torch (PyTorch)
-- Ollama (lokální LLM)
-- Model: llama3.1
-
----
-
-## 📁 Struktura projektu
 # 🎙️ AIagenti01 — Speech-to-Text → LLM
 
 Tento projekt je lokální AI agent pro přepis audio souborů pomocí Whisper a následné zpracování výsledného textu lokálním LLM (Ollama).
