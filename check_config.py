@@ -61,12 +61,24 @@ def check_config_files():
             print(f"  ✓ {file}")
         else:
             print(f"  ✗ {file} - CHYBÍ!")
-
+        'setup_env.bat',
 def print_summary():
     """Vypíše souhrn konfigurace"""
     print("\n" + "="*50)
-    print("SOUHRN KONFIGURACE AGENTI01")
+    print("SOUHRN KONFIGURACE AIagenti01")
     print("="*50)
+    print("\nVirtální prostředí: aiagenti_venv_01")
+    print("Python verze: 3.12")
+    print("Package manager: uv")
+    print("\nInstalované balíčky:")
+    print("  - requests")
+    print("  - openai-whisper (large-v3)")
+    print("  - torch")
+    print("  - ollama")
+    print("  - python-dotenv")
+    print("\nProměnné prostředí:")
+    print("  - OLLAMA_API_URL=http://localhost:3210")
+    print("\n" + "="*50)
     print("\nVirtální prostředí: Agenti01")
     print("Python verze: 3.12")
     print("Package manager: uv")
@@ -90,5 +102,5 @@ if __name__ == "__main__":
     print_summary()
     
     print("\nKroky pro aktivaci:")
-    print("  Windows: .\\Agenti01\\Scripts\\Activate.ps1")
-    print("  Unix: source Agenti01/bin/activate")
+    print("  Windows: .\\aiagenti_venv_01\\Scripts\\Activate.ps1")
+    print("  Unix: source aiagenti_venv_01/bin/activate")

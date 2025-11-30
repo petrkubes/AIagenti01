@@ -15,14 +15,14 @@ help:
 
 # Vytvoření virtuálního prostředí
 setup:
-	@echo "Vytvářím virtuální prostředí Agenti01 s Python 3.12..."
-	@uv venv Agenti01 --python 3.12
+	@echo "Vytvářím virtuální prostředí aiagenti_venv_01 s Python 3.12..."
+	@uv venv aiagenti_venv_01 --python 3.12
 	@echo "Instaluji balíčky..."
 	@uv pip install -e .
 	@echo "✓ Setup dokončen!"
 	@echo "Aktivuj virtuální prostředí:"
-	@echo "  Windows: .\Agenti01\Scripts\Activate.ps1"
-	@echo "  Unix: source Agenti01/bin/activate"
+	@echo "  Windows: .\aiagenti_venv_01\Scripts\Activate.ps1"
+	@echo "  Unix: source aiagenti_venv_01/bin/activate"
 
 # Setup s vývojovými balíčky
 setup-dev: setup
@@ -33,13 +33,13 @@ setup-dev: setup
 # Aktivace virtuálního prostředí (jen přesměrování)
 activate:
 	@echo "Aktivuji virtuální prostředí..."
-	@echo "Windows: .\Agenti01\Scripts\Activate.ps1"
-	@echo "Unix: source Agenti01/bin/activate"
+	@echo "Windows: .\aiagenti_venv_01\Scripts\Activate.ps1"
+	@echo "Unix: source aiagenti_venv_01/bin/activate"
 
 # Čištění
 clean:
 	@echo "Odstraňuji cache a virtuální prostředí..."
-	@rm -rf Agenti01
+	@rm -rf aiagenti_venv_01
 	@find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 	@find . -type f -name "*.pyc" -delete 2>/dev/null || true
 	@echo "✓ Čištění dokončeno!"

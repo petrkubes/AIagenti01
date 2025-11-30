@@ -42,14 +42,14 @@ Tato složka obsahuje kompletní konfiguraci pro vytvoření a správu Python vi
 ### Windows (PowerShell)
 ```powershell
 .\setup_env.ps1
-.\Agenti01\Scripts\Activate.ps1
+.\aiagenti_venv_01\Scripts\Activate.ps1
 python main.py samples/audio.mp3
 ```
 
 ### Windows (Batch)
 ```cmd
 setup_env.bat
-Agenti01\Scripts\activate.bat
+aiagenti_venv_01\Scripts\activate.bat
 python main.py samples/audio.mp3
 ```
 
@@ -57,13 +57,13 @@ python main.py samples/audio.mp3
 ```bash
 chmod +x setup_env.sh
 ./setup_env.sh
-source Agenti01/bin/activate
+source aiagenti_venv_01/bin/activate
 python main.py samples/audio.mp3
 ```
 
 ## 📋 Co je v Prostředí
 
-**Virtuální Prostředí:** `Agenti01`  
+**Virtuální Prostředí:** `aiagenti_venv_01`  
 **Python:** 3.12  
 **Package Manager:** uv
 
@@ -111,8 +111,8 @@ Viz **SETUP_README.md** pro:
 
 ```bash
 # Aktivuj prostředí
-source Agenti01/bin/activate  # Unix
-.\Agenti01\Scripts\Activate.ps1  # Windows
+source aiagenti_venv_01/bin/activate  # Unix
+.\aiagenti_venv_01\Scripts\Activate.ps1  # Windows
 
 # Běž check skript
 python check_config.py
@@ -158,7 +158,7 @@ make install-pkg    # Instaluje balíček (make install-pkg PKG=name)
 ## ❓ FAQ
 
 **Q: Jak aktivuji prostředí?**  
-A: Windows: `.\Agenti01\Scripts\Activate.ps1` | Unix: `source Agenti01/bin/activate`
+A: Windows: `.\aiagenti_venv_01\Scripts\Activate.ps1` | Unix: `source aiagenti_venv_01/bin/activate`
 
 **Q: Kde je moje .env?**  
 A: V kořenovém adresáři projektu. Není v Gitu, každý si ho vytvoří.
@@ -167,7 +167,7 @@ A: V kořenovém adresáři projektu. Není v Gitu, každý si ho vytvoří.
 A: Uprav `.env` soubor: `OLLAMA_API_URL=http://tvuj-host:port`
 
 **Q: Jak odstraním prostředí?**  
-A: `rm -rf Agenti01` (Unix) nebo `Remove-Item -Recurse Agenti01` (Windows)
+A: `rm -rf aiagenti_venv_01` (Unix) nebo `Remove-Item -Recurse aiagenti_venv_01` (Windows)
 
 ## 📞 Podpora
 

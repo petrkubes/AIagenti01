@@ -21,110 +21,118 @@ Projekt běží kompletně lokálně a podporuje GPU akceleraci přes Ollama.
 ---
 
 ## 📁 Struktura projektu
+# 🎙️ AIagenti01 — Speech-to-Text → LLM
+
+Tento projekt je lokální AI agent pro přepis audio souborů pomocí Whisper a následné zpracování výsledného textu lokálním LLM (Ollama).
+
+Hlavní změny v aktuální verzi:
+- Projekt používá Python 3.12.
+- Prostředí se nastavuje pomocí dodaných skriptů `setup_env.ps1` / `setup_env.sh` (využívají `uv`).
+- Spouštěcí nástroj je `tools_ollama_whisper.py` (doporučeno spouštět přes `uv run`).
+
+---
+
+## 🧰 Technologie
+
+- Python 3.12
+- uv (správce prostředí a závislostí)
+- openai-whisper (Whisper wrapper)
+- torch (PyTorch)
+- ollama (lokální LLM klient)
+
+---
+
+## 📁 Důležité soubory
 
 ```
 .
 ├── main.py
-├── requirements.txt
-└── README.md
+├── tools_ollama_whisper.py    # hlavní nástroj pro přepis a volání Ollama
+├── setup_env.ps1             # PowerShell helper pro Windows
+├── setup_env.sh              # shell helper pro Linux/macOS
+├── pyproject.toml            # metadata projektu
+├── uv.lock                   # generovaný lock file (uv)
+└── Readme.md
 ```
 
 ---
 
-## ⚙️ Nastavení prostředí
+## ⚙️ Rychlé nastavení (doporučeno)
 
-### 1) Vytvoření virtuálního prostředí
+Na Windows (PowerShell) spusťte (v kořenovém adresáři projektu):
 
-**Windows (PowerShell)**
-
-```
-python -m venv AIAgent01
-.\AIAgent01\Scripts\Activate.ps1
+```powershell
+.\setup_env.ps1
 ```
 
-**Linux / macOS**
+Skript vytvoří/aktualizuje virtuální prostředí `aiagenti_venv_01`, aktivuje ho a nainstaluje závislosti.
 
-```
-python3 -m venv AIAgent01
-source AIAgent01/bin/activate
-```
+Alternativně (ručně):
 
-### 2) Instalace závislostí
-
-```
+```powershell
+python -m venv aiagenti_venv_01
+.\aiagenti_venv_01\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
+Na Linux/macOS použijte `setup_env.sh` nebo standardní `python3 -m venv` a `source` aktivaci.
+
 ---
 
-## 🔧 Konfigurace Ollamy
+## ▶️ Spuštění nástroje
 
-Projekt očekává proměnnou prostředí:
+Nejjednodušší (pokud používáte `uv` a chcete spustit nástroj v izolovaném prostředí):
 
-```
-OLLAMA_API_URL=http://localhost:3210
-```
-
-**Windows PowerShell**
-
-```
-$env:OLLAMA_API_URL="http://localhost:3210"
+```powershell
+uv run .\tools_ollama_whisper.py -- samples/ucebnice10.mp3
 ```
 
-**Linux / macOS**
+Nebo aktivujte venv a spusťte přímo Pythonem:
 
+```powershell
+.\aiagenti_venv_01\Scripts\Activate.ps1
+python tools_ollama_whisper.py samples/ucebnice10.mp3
 ```
+
+Parametry (přehled):
+
+- `--whisper-model` : tiny|base|small|medium|large (volitelné)
+- `--language` : pokud chcete vynutit jazyk místo automatické detekce
+
+---
+
+## 🔧 Konfigurace Ollama
+
+Nastavte proměnnou prostředí na URL lokálního Ollama API (výchozí):
+
+Windows PowerShell:
+
+```powershell
+$env:OLLAMA_API_URL = "http://localhost:3210"
+```
+
+Linux/macOS:
+
+```bash
 export OLLAMA_API_URL="http://localhost:3210"
 ```
 
-### Stažení a spuštění modelu
+Stáhněte a spusťte model přes Ollama:
 
-```
+```bash
 ollama pull llama3.1
 ollama run llama3.1
 ```
 
 ---
 
-## ▶️ Spuštění projektu
+## Tipy a řešení problémů
 
-Základní použití:
-
-```
-python main.py ./nahravka.wav
-```
-
-Volitelné parametry:
-
-```
---whisper-model tiny|base|small|medium|large
---llm-model llama3.1
-```
+- Pokud `uv` vykazuje chybu ohledně `uv.lock`, smažte `uv.lock` a přegenerujte jej příkazem `uv pip compile pyproject.toml -o uv.lock`.
+- Pokud Windows zablokuje soubory při odstraňování venv, ukončete běžící Python procesy nebo použijte `rmdir /s /q` z cmd s oprávněním.
 
 ---
 
-## 🧠 Jak to funguje
+## Kontakt
 
-- Whisper provede přepis audio → text.
-- Skript odešle text do Ollama API na endpoint `/api/chat`.
-- Adresa Ollamy je nastavena přes proměnnou prostředí `OLLAMA_API_URL`.
-- Výstupem je odpověď modelu zobrazená v konzoli.
-
----
-
-## 🔍 Kompletní příklad krok-za-krokem (Windows PowerShell)
-
-```
-python -m venv AIAgent01
-.\AIAgent01\Scripts\Activate.ps1
-pip install -r requirements.txt
-$env:OLLAMA_API_URL="http://localhost:3210"
-python main.py .
-ahravka.wav
-```
-
----
-
-## ✔️ Hotovo
-
-Projekt je připraven k použití. Stačí vložit audio soubor, spustit skript a model vrátí odpověď.
+Pokud chcete další úpravy (např. přidat dávkové zpracování nebo webové UI), napište a rád pomohu.

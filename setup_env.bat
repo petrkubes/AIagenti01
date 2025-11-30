@@ -4,7 +4,7 @@ REM Vyžaduje: uv package manager, Python 3.12
 
 echo.
 echo ========================================
-echo Nastaveni virtualne prostredi AIagenti01
+echo Nastaveni virtualne prostredi aiagenti_venv_01
 echo ========================================
 echo.
 
@@ -20,8 +20,8 @@ echo [OK] uv je nainstalovan
 echo.
 
 REM Vytvoření virtuálního prostředí s Python 3.12
-echo Vytvarim virtualni prostredi 'Agenti01' s Python 3.12...
-call uv venv Agenti01 --python 3.12
+echo Vytvarim virtualni prostredi 'aiagenti_venv_01' s Python 3.12...
+call uv venv aiagenti_venv_01 --python 3.12
 
 if errorlevel 1 (
     echo Chyba: Nepodarlo se vytvorit virtualni prostredi!
@@ -33,7 +33,7 @@ echo.
 
 REM Aktivace virtuálního prostředí
 echo Aktivuji virtualni prostredi...
-call Agenti01\Scripts\activate.bat
+call aiagenti_venv_01\Scripts\activate.bat
 
 echo [OK] Virtualni prostredi aktivovano
 echo.
@@ -67,11 +67,11 @@ echo ========================================
 echo.
 echo Prisiti kroky:
 echo 1. Aktivuj virtualni prostredi (pokud neni aktivni):
-echo    Agenti01\Scripts\activate.bat
+echo    aiagenti_venv_01\Scripts\activate.bat
 echo.
 echo 2. Spust svuj skript:
 echo    python main.py samples\audio.mp3
 echo.
-echo 3. Ujisti se, ze Ollama bezi na localhost:3120:
+echo 3. Ujisti se, ze Ollama bezi na localhost:3210:
 echo    echo %%OLLAMA_API_URL%%
 echo.

@@ -1,10 +1,10 @@
 # PowerShell script pro nastavení virtuálního prostředí pomocí uv
-# Jméno virtuálního prostředí: Agenti01
+# Jméno virtuálního prostředí: aiagenti_venv_01
 # Python verze: 3.12
 # Balíčky: Whisper large-v3 a Ollama
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "Nastavení virtuálního prostředí AIagenti01" -ForegroundColor Cyan
+Write-Host "Nastavení virtuálního prostředí aiagenti_venv_01" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -20,8 +20,8 @@ Write-Host "✓ uv je nainstalován" -ForegroundColor Green
 Write-Host ""
 
 # Vytvoření virtuálního prostředí s Python 3.12
-Write-Host "Vytvářím virtuální prostředí 'Agenti01' s Python 3.12..." -ForegroundColor Cyan
-uv venv Agenti01 --python 3.12
+Write-Host "Vytvářím virtuální prostředí 'aiagenti_venv_01' s Python 3.12..." -ForegroundColor Cyan
+uv venv aiagenti_venv_01 --python 3.12 --clear
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Chyba: Nepodařilo se vytvořit virtuální prostředí!" -ForegroundColor Red
@@ -33,7 +33,7 @@ Write-Host ""
 
 # Aktivace virtuálního prostředí
 Write-Host "Aktivuji virtuální prostředí..." -ForegroundColor Cyan
-& ".\Agenti01\Scripts\Activate.ps1"
+& ".\aiagenti_venv_01\Scripts\Activate.ps1"
 
 Write-Host "✓ Virtuální prostředí aktivováno" -ForegroundColor Green
 Write-Host ""
@@ -76,11 +76,11 @@ Write-Host "========================================" -ForegroundColor Green
 Write-Host ""
 Write-Host "Příští kroky:" -ForegroundColor Cyan
 Write-Host "1. Aktivuj virtuální prostředí (pokud není aktivní):" -ForegroundColor Gray
-Write-Host "   .\Agenti01\Scripts\Activate.ps1" -ForegroundColor Yellow
+Write-Host "   .\aiagenti_venv_01\Scripts\Activate.ps1" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "2. Spusť tvůj skript:" -ForegroundColor Gray
 Write-Host "   python main.py <audio_soubor>" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "3. Ujisti se, že Ollama běží na localhost:3120:" -ForegroundColor Gray
-Write-Host "   $env:OLLAMA_API_URL = 'http://localhost:3120'" -ForegroundColor Yellow
+Write-Host "3. Ujisti se, že Ollama běží na localhost:3210:" -ForegroundColor Gray
+Write-Host "   $env:OLLAMA_API_URL = 'http://localhost:3210'" -ForegroundColor Yellow
 Write-Host ""

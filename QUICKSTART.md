@@ -5,7 +5,7 @@
 ### Windows PowerShell
 ```powershell
 .\setup_env.ps1
-.\Agenti01\Scripts\Activate.ps1
+.\aiagenti_venv_01\Scripts\Activate.ps1
 python main.py samples/audio.mp3
 ```
 
@@ -13,7 +13,7 @@ python main.py samples/audio.mp3
 ```bash
 chmod +x setup_env.sh
 ./setup_env.sh
-source Agenti01/bin/activate
+source aiagenti_venv_01/bin/activate
 python main.py samples/audio.mp3
 ```
 
@@ -67,13 +67,13 @@ Poté co se setup skončí:
 
 ```powershell
 # Windows PowerShell
-.\Agenti01\Scripts\Activate.ps1
+.\aiagenti_venv_01\Scripts\Activate.ps1
 
 # Windows Batch
-Agenti01\Scripts\activate.bat
+aiagenti_venv_01\Scripts\activate.bat
 
 # Unix (Linux/macOS)
-source Agenti01/bin/activate
+source aiagenti_venv_01/bin/activate
 ```
 
 ### Krok 3: Ověř Instalaci
@@ -121,11 +121,11 @@ python main.py --help
 
 ---
 
-## 📦 STRUKTURA PROJEKTU
+## 📂 STRUKTURA PROJEKTU
 
 ```
 AIagenti01/
-├── Agenti01/                    # ← Virtuální prostředí (vytvoří se automaticky)
+├── aiagenti_venv_01/                    # ← Virtuální prostředí (vytvoří se automaticky)
 │   ├── Scripts/ (Windows)       # Spustitelné skripty
 │   └── bin/ (Unix)              # Unix spustitelné soubory
 ├── samples/                     # Audio soubory na testování
@@ -176,7 +176,7 @@ uv pip compile pyproject.toml -o uv.lock
 make clean
 
 # Nebo ručně
-rm -rf Agenti01
+rm -rf aiagenti_venv_01
 ```
 
 ### Formátování Kódu
@@ -195,7 +195,7 @@ make test     # Pytest testy
 → Instaluj uv: https://github.com/astral-sh/uv
 
 ### ❌ "Ollama connection refused"
-→ Ujisti se, že Ollama běží: `curl http://localhost:3120/api/tags`
+→ Ujisti se, že Ollama běží: `curl http://localhost:3210/api/tags`
 
 ### ❌ "Python 3.12 not found"
 → uv si stáhne automaticky nebo instaluj ručně
@@ -222,17 +222,17 @@ chmod +x setup_env.sh
 ## ✨ HOTOVO!
 
 Teď bys měl/měla mít:
-- ✅ Virtuální prostředí `Agenti01` s Python 3.12
+- ✅ Virtuální prostředí `aiagenti_venv_01` s Python 3.12
 - ✅ Whisper large-v3 model pro speech-to-text
-- ✅ Ollama client připravený na localhost:3120
+- ✅ Ollama client připravený na localhost:3210
 - ✅ Všechny proměnné prostředí nakonfigurované
 
 Můžeš začít pracovat! 🎉
 
 ```bash
 # Aktivuj prostředí
-.\Agenti01\Scripts\Activate.ps1  # Windows
-source Agenti01/bin/activate      # Unix
+.\aiagenti_venv_01\Scripts\Activate.ps1  # Windows
+source aiagenti_venv_01/bin/activate      # Unix
 
 # Spusť skript
 python main.py samples/audio.mp3

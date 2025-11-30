@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Bash script pro nastavení virtuálního prostředí pomocí uv
-# Jméno virtuálního prostředí: Agenti01
+# Jméno virtuálního prostředí: aiagenti_venv_01
 # Python verze: 3.12
 # Balíčky: Whisper large-v3 a Ollama
 
 echo "========================================"
-echo "Nastavení virtuálního prostředí AIagenti01"
+echo "Nastavení virtuálního prostředí aiagenti_venv_01"
 echo "========================================"
 echo ""
 
@@ -21,8 +21,8 @@ echo "✓ uv je nainstalován"
 echo ""
 
 # Vytvoření virtuálního prostředí s Python 3.12
-echo "Vytvářím virtuální prostředí 'Agenti01' s Python 3.12..."
-uv venv Agenti01 --python 3.12
+echo "Vytvářím virtuální prostředí 'aiagenti_venv_01' s Python 3.12..."
+uv venv aiagenti_venv_01 --python 3.12
 
 if [ $? -ne 0 ]; then
     echo "Chyba: Nepodařilo se vytvořit virtuální prostředí!"
@@ -34,7 +34,7 @@ echo ""
 
 # Aktivace virtuálního prostředí
 echo "Aktivuji virtuální prostředí..."
-source Agenti01/bin/activate
+source aiagenti_venv_01/bin/activate
 
 echo "✓ Virtuální prostředí aktivováno"
 echo ""
@@ -67,11 +67,11 @@ echo "========================================"
 echo ""
 echo "Příští kroky:"
 echo "1. Aktivuj virtuální prostředí (pokud není aktivní):"
-echo "   source Agenti01/bin/activate"
+echo "   source aiagenti_venv_01/bin/activate"
 echo ""
 echo "2. Spusť tvůj skript:"
 echo "   python main.py <audio_soubor>"
 echo ""
-echo "3. Ujisti se, že Ollama běží na localhost:3120:"
+echo "3. Ujisti se, že Ollama běží na localhost:3210:"
 echo "   echo \$OLLAMA_API_URL"
 echo ""

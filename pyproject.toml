@@ -15,6 +15,9 @@ dependencies = [
 requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+py-modules = ["main", "check_config", "tools_ollama_whisper"]
+
 [tool.uv]
 # Konfigurace pro uv package manager
-python-version = "3.12"
+# Note: python version is specified in project.requires-python

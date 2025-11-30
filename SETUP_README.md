@@ -20,7 +20,7 @@ Kompletní konfigurační soubory pro vytvoření a správu Python virtuálního
 
 ### 3. **setup_env.ps1** (Windows PowerShell)
 - Automatizovaný skript pro nastavení prostředí
-- Vytvoří virtuální prostředí `Agenti01` s Python 3.12
+- Vytvoří virtuální prostředí `aiagenti_venv_01` s Python 3.12
 - Nainstaluje všechny balíčky
 - Nastaví proměnné prostředí
 
@@ -37,7 +37,7 @@ Kompletní konfigurační soubory pro vytvoření a správu Python virtuálního
 ### Předpoklady
 - Musíš mít nainstalovaný **uv** - stáhni si jej z: https://github.com/astral-sh/uv
 - Python 3.12 (uv si ho stáhne automaticky, pokud není k dispozici)
-- Ollama běžící na `http://localhost:3120`
+- Ollama běžící na `http://localhost:3210`
 
 ### Windows (PowerShell)
 
@@ -50,7 +50,7 @@ cd c:\Docker\AI agenti\AIagenti01
 
 # 3. Virtuální prostředí by mělo být aktivováno
 # (pokud ne, spusť ručně:)
-.\Agenti01\Scripts\Activate.ps1
+.\aiagenti_venv_01\Scripts\Activate.ps1
 
 # 4. Spusť svůj skript
 python main.py samples/audio.mp3
@@ -70,7 +70,7 @@ chmod +x setup_env.sh
 
 # 4. Virtuální prostředí by mělo být aktivováno
 # (pokud ne, spusť ručně:)
-source Agenti01/bin/activate
+source aiagenti_venv_01/bin/activate
 
 # 5. Spusť svůj skript
 python main.py samples/audio.mp3
@@ -80,11 +80,11 @@ python main.py samples/audio.mp3
 
 ```bash
 # Vytvoření virtuálního prostředí
-uv venv Agenti01 --python 3.12
+uv venv aiagenti_venv_01 --python 3.12
 
 # Aktivace
-# Windows: .\Agenti01\Scripts\Activate.ps1
-# Unix: source Agenti01/bin/activate
+# Windows: .\aiagenti_venv_01\Scripts\Activate.ps1
+# Unix: source aiagenti_venv_01/bin/activate
 
 # Instalace balíčků
 uv pip install -e .
@@ -94,16 +94,16 @@ uv pip install -r requirements-dev.txt
 
 # Nastavení proměnné prostředí
 # Windows PowerShell:
-$env:OLLAMA_API_URL = "http://localhost:3120"
+$env:OLLAMA_API_URL = "http://localhost:3210"
 
 # Linux/macOS:
-export OLLAMA_API_URL="http://localhost:3120"
+export OLLAMA_API_URL="http://localhost:3210"
 ```
 
-## 📝 Struktura virtuálního prostředí
+## 📂 Struktura virtuálního prostředí
 
 ```
-Agenti01/
+aiagenti_venv_01/
 ├── Scripts/          (Windows)
 │   ├── Activate.ps1
 │   ├── python.exe
@@ -123,13 +123,13 @@ Agenti01/
 
 ## ⚙️ Konfigurace Ollama API
 
-Skript očekává, že Ollama běží na **http://localhost:3120**
+Skript očekává, že Ollama běží na **http://localhost:3210**
 
 Pokud jej máš na jiném portu, uprav soubor `.env`:
 
 ```ini
 # .env
-OLLAMA_API_URL=http://localhost:3120
+OLLAMA_API_URL=http://localhost:3210
 ```
 
 ## 📦 Instalace dalších balíčků
@@ -148,10 +148,10 @@ uv pip compile pyproject.toml -o uv.lock
 
 ```bash
 # Windows
-Remove-Item -Recurse Agenti01
+Remove-Item -Recurse aiagenti_venv_01
 
 # Linux/macOS
-rm -rf Agenti01
+rm -rf aiagenti_venv_01
 ```
 
 ## ✅ Ověření instalace
